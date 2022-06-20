@@ -546,8 +546,8 @@ var _selectedPng = require("./images/selected.png");
 var _selectedPngDefault = parcelHelpers.interopDefault(_selectedPng);
 var _spacepiratePng = require("./images/spacepirate.png");
 var _spacepiratePngDefault = parcelHelpers.interopDefault(_spacepiratePng);
-var _bonesPng = require("./images/bones.png");
-var _bonesPngDefault = parcelHelpers.interopDefault(_bonesPng);
+var _spacepirateDestroyedPng = require("./images/spacepirate_destroyed.png");
+var _spacepirateDestroyedPngDefault = parcelHelpers.interopDefault(_spacepirateDestroyedPng);
 var _spacecraftPng = require("./images/spacecraft.png");
 var _spacecraftPngDefault = parcelHelpers.interopDefault(_spacecraftPng);
 class Game {
@@ -560,7 +560,7 @@ class Game {
         });
         document.body.appendChild(this.pixi.view);
         this.loader = new _pixiJs.Loader();
-        this.loader.add("playerTexture", _spacecraftPngDefault.default).add("locationTexture", _locationPngDefault.default).add("selectedTexture", _selectedPngDefault.default).add("enemytexture", _spacepiratePngDefault.default).add("deadTexture", _bonesPngDefault.default).add("backgroundTexture", _backgroundNlPngDefault.default);
+        this.loader.add("playerTexture", _spacecraftPngDefault.default).add("locationTexture", _locationPngDefault.default).add("selectedTexture", _selectedPngDefault.default).add("enemytexture", _spacepiratePngDefault.default).add("deadTexture", _spacepirateDestroyedPngDefault.default).add("backgroundTexture", _backgroundNlPngDefault.default);
         document.body.appendChild(this.pixi.view);
         this.loader.load(()=>this.doneLoading()
         );
@@ -586,11 +586,19 @@ class Game {
     }
     update(delta) {
         this.player.update(delta);
-        for (let enemy of this.enemies)enemy.update(delta);
+        for (let enemy of this.enemies){
+            if (this.collision(enemy, this.player)) enemy.texture = this.loader.resources["deadTexture"].texture;
+            enemy.update(delta);
+        }
+    }
+    collision(sprite1, sprite2) {
+        const bounds1 = sprite1.getBounds();
+        const bounds2 = sprite2.getBounds();
+        return bounds1.x < bounds2.x + bounds2.width && bounds1.x + bounds1.width > bounds2.x && bounds1.y < bounds2.y + bounds2.height && bounds1.y + bounds1.height > bounds2.y;
     }
 }
 
-},{"pixi.js":"dsYej","./enemy":"e8Rej","./player":"6OTSH","./images/background_nl.png":"fNGPz","./images/location.png":"cWIbU","./images/selected.png":"HCxBO","./images/spacepirate.png":"2FE4X","./images/bones.png":"5gmO0","./images/spacecraft.png":"gZ8P8","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dsYej":[function(require,module,exports) {
+},{"pixi.js":"dsYej","./enemy":"e8Rej","./player":"6OTSH","./images/background_nl.png":"fNGPz","./images/location.png":"cWIbU","./images/selected.png":"HCxBO","./images/spacepirate.png":"2FE4X","./images/spacecraft.png":"gZ8P8","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./images/spacepirate_destroyed.png":"abLa8"}],"dsYej":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "utils", ()=>_utils
@@ -37271,11 +37279,11 @@ module.exports = require('./helpers/bundle-url').getBundleURL('jcCUn') + "select
 },{"./helpers/bundle-url":"lgJ39"}],"2FE4X":[function(require,module,exports) {
 module.exports = require('./helpers/bundle-url').getBundleURL('jcCUn') + "spacepirate.060958b6.png" + "?" + Date.now();
 
-},{"./helpers/bundle-url":"lgJ39"}],"5gmO0":[function(require,module,exports) {
-module.exports = require('./helpers/bundle-url').getBundleURL('jcCUn') + "bones.df4825d2.png" + "?" + Date.now();
-
 },{"./helpers/bundle-url":"lgJ39"}],"gZ8P8":[function(require,module,exports) {
 module.exports = require('./helpers/bundle-url').getBundleURL('jcCUn') + "spacecraft.ff71d254.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"abLa8":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('jcCUn') + "spacepirate_destroyed.843bb271.png" + "?" + Date.now();
 
 },{"./helpers/bundle-url":"lgJ39"}]},["6XGE1","h7u1C"], "h7u1C", "parcelRequire6d49")
 

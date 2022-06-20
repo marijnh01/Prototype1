@@ -6,7 +6,7 @@ import backgroundImage from "./images/background_nl.png";
 import locationImage from "./images/location.png";
 import selectedImage from "./images/selected.png";
 import enemyImage from "./images/spacepirate.png"
-import deadImage from "./images/bones.png"
+import deadImage from "./images/spacepirate_destroyed.png"
 import playerImage from "./images/spacecraft.png";
 
 export class Game {
@@ -69,10 +69,24 @@ export class Game {
         this.player.update(delta);
 
       for (let enemy of this.enemies) {
-
+        if (this.collision(enemy, this.player)) {
+            enemy.texture = this.loader.resources["deadTexture"].texture!;
+          }
         enemy.update(delta)
     }
     }
+
+    collision(sprite1: PIXI.Sprite, sprite2: PIXI.Sprite) {
+        const bounds1 = sprite1.getBounds();
+        const bounds2 = sprite2.getBounds();
+    
+        return (
+          bounds1.x < bounds2.x + bounds2.width &&
+          bounds1.x + bounds1.width > bounds2.x &&
+          bounds1.y < bounds2.y + bounds2.height &&
+          bounds1.y + bounds1.height > bounds2.y
+          );
+      }
 
 
     }
