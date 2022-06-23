@@ -20,7 +20,6 @@ export class Enemy extends PIXI.Sprite {
         this.x = Math.random() * 2000
         this.y = Math.random() * 2000
         this.direction = Math.random()*1
-        this.on('pointerdown', () => this.killfish())
         this.scale.set(0.5 +Math.random()*1)
         const myfilter = new PIXI.filters.ColorMatrixFilter()
         this.filters = [myfilter]
