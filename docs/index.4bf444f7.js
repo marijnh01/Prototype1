@@ -590,7 +590,7 @@ class Game {
     }
 }
 
-},{"pixi.js":"dsYej","./enemy":"e8Rej","./player":"6OTSH","./images/background_nl.png":"fNGPz","./images/location.png":"cWIbU","./images/selected.png":"HCxBO","./images/spacepirate.png":"2FE4X","./images/spacecraft.png":"gZ8P8","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./images/bones.png":"5gmO0"}],"dsYej":[function(require,module,exports) {
+},{"pixi.js":"dsYej","./enemy":"e8Rej","./player":"6OTSH","./images/background_nl.png":"fNGPz","./images/location.png":"cWIbU","./images/selected.png":"HCxBO","./images/spacepirate.png":"2FE4X","./images/bones.png":"5gmO0","./images/spacecraft.png":"gZ8P8","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dsYej":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "utils", ()=>_utils
@@ -37122,8 +37122,6 @@ class Enemy extends _pixiJs.Sprite {
         this.x = Math.random() * 2000;
         this.y = Math.random() * 2000;
         this.direction = Math.random() * 1;
-        this.on('pointerdown', ()=>this.killfish()
-        );
         this.scale.set(0.5 + Math.random() * 1);
         const myfilter = new _pixiJs.filters.ColorMatrixFilter();
         this.filters = [
@@ -37271,11 +37269,11 @@ module.exports = require('./helpers/bundle-url').getBundleURL('jcCUn') + "select
 },{"./helpers/bundle-url":"lgJ39"}],"2FE4X":[function(require,module,exports) {
 module.exports = require('./helpers/bundle-url').getBundleURL('jcCUn') + "spacepirate.060958b6.png" + "?" + Date.now();
 
-},{"./helpers/bundle-url":"lgJ39"}],"gZ8P8":[function(require,module,exports) {
-module.exports = require('./helpers/bundle-url').getBundleURL('jcCUn') + "spacecraft.ff71d254.png" + "?" + Date.now();
-
 },{"./helpers/bundle-url":"lgJ39"}],"5gmO0":[function(require,module,exports) {
 module.exports = require('./helpers/bundle-url').getBundleURL('jcCUn') + "bones.df4825d2.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"gZ8P8":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('jcCUn') + "spacecraft.ff71d254.png" + "?" + Date.now();
 
 },{"./helpers/bundle-url":"lgJ39"}]},["6XGE1","h7u1C"], "h7u1C", "parcelRequire6d49")
 
